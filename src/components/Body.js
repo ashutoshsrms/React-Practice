@@ -55,10 +55,10 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            const filterRestaurants = listOfRestaurant.filter(
+            const filterRestaurants = filterListOfRestaurant.filter(
               (res) => res.info.avgRating > 4
             );
-            setlistOfRestaurant(filterRestaurants);
+            setfilterListOfRestaurant(filterRestaurants);
             // console.log(filterRestaurants);
           }}
         >
