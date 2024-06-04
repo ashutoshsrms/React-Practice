@@ -1,9 +1,10 @@
 {
   "version": "1.0.0",
   "description": "Food ordering app",
-   "main": "dist/server.js",
+  "main": "dist/server.js",
   "scripts": {
     "start": "parcel index.html",
+    "start-proxy": "node proxy.js",
     "build": "parcel build index.html"
   },
   "dependencies": {
@@ -13,8 +14,9 @@
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
+    "http-proxy-middleware": "^2.0.6",
     "process": "^0.11.10"
   },
-   "author": "Ashutosh",
+  "author": "Ashutosh",
   "license": "ISC"
 }

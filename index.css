@@ -23,17 +23,17 @@
   display: flex;
   flex-wrap: wrap;
 }
-.rest-card {
+/* .rest-card {
   padding: 10px;
   margin: 1%;
   width: 200px;
   background-color: #f0f0f0;
-}
+} */
 
-.rest-card:hover {
+/* .rest-card:hover {
   border: 1px solid rgb(208, 0, 255);
   cursor: pointer;
-}
+} */
 
 .search {
   padding: 10px;
@@ -73,4 +73,13 @@
 }
 .search-btn{
   cursor: pointer;
+}
+
+.card-link{
+   border: 1px solid rgb(208, 0, 255);
+    cursor: pointer;
+ padding: 10px;
+  margin: 1%;
+  width: 200px;
+  background-color: #f0f0f0;
 }
