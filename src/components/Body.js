@@ -1,3 +1,4 @@
+import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 // import restList from "../utils/mockData";
@@ -27,6 +28,14 @@ const Body = () => {
     setlistOfRestaurant(restaurants);
     setfilterListOfRestaurant(restaurants);
   };
+
+  const onlineStatus=useOnlineStatus();
+
+    if (onlineStatus === false) {
+      return <h1>Looks Like you Are offline !! Please check your internet</h1>;
+    }
+
+
 
   return listOfRestaurant.length === 0 ? (
     <Shimmer />

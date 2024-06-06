@@ -3,32 +3,12 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constant";
 import Error from "./Error";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [restInfo, setRestInfo] = useState(null);
-  const [error, setError] = useState(null);
   const { restId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    try {
-      const data = await fetch(MENU_API + restId);
-      if (!data.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const json = await data.json();
-      setRestInfo(json.data);
-    } catch (err) {
-      setError(err);
-    }
-  };
-
-  if (error) {
-    return <Error />;
-  }
+  const restInfo = useRestaurantMenu(restId);
 
   if (restInfo === null) {
     return <Shimmer />;
