@@ -39,18 +39,19 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter flex ">
+      <div className="filter flex justify-center items-center bg-gray-100 rounded-lg shadow-md mb-2">
         <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box border border-solid border-black-100"
+            className="search-box border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent shadow-sm"
+            placeholder="Search Restaurants..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="px-4 py-1 m-3 bg-green-200 rounded-lg"
+            className="search-button ml-3 px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg shadow-md hover:from-green-500 hover:to-green-600 transition duration-300 ease-in-out"
             onClick={() => {
               const filterRestaurants = listOfRestaurant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -61,9 +62,9 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="m-4 p-4">
+        <div className="mx-4">
           <button
-            className="filter-btn px-4 py-1 m-3 bg-green-200 rounded-lg"
+            className="filter-btn px-4 py-2 bg-gradient-to-r from-blue-400 to-blue-500 text-white rounded-lg shadow-md hover:from-blue-500 hover:to-blue-600 transition duration-300 ease-in-out"
             onClick={() => {
               const filterRestaurants = filterListOfRestaurant.filter(
                 (res) => res.info.avgRating > 4
@@ -76,7 +77,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap gap-1 justify-center">
+      <div className="flex flex-wrap gap-1 justify-center items-stretch">
         {filterListOfRestaurant.map((restaurant) => (
           <Link
             className="card-link"
