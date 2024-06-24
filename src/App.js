@@ -13,7 +13,9 @@ const Grocery=lazy(()=> import("./components/Grocery"))
 
 const AppLayout = () => {
   return (
+    
     <div className="app">
+      {console.log("Add shh for git")}
       <Header />
       <Outlet />
     </div>
