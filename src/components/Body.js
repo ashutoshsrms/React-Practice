@@ -1,8 +1,9 @@
 import useOnlineStatus from "../utils/useOnlineStatus";
-import RestaurantCard from "./RestaurantCard";
+import UserContext from "../utils/UserContext";
+import RestaurantCard, { withPromtedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 // import restList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Body = () => {
@@ -10,6 +11,7 @@ const Body = () => {
   const [filterListOfRestaurant, setfilterListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const RestaurantCardPromoted = withPromtedLabel(RestaurantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -34,6 +36,8 @@ const Body = () => {
   if (onlineStatus === false) {
     return <h1>Looks Like you Are offline !! Please check your internet</h1>;
   }
+
+  const {loggedInUser, setUserName}=useContext(UserContext)
 
   return listOfRestaurant.length === 0 ? (
     <Shimmer />
@@ -76,6 +80,15 @@ const Body = () => {
             Top Rated Restaurant
           </button>
         </div>
+
+        <div className="mx-4">
+          <label>UserName : </label>
+          <input
+            className="border border-black p-1"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
+        </div>
       </div>
       <div className="flex flex-wrap gap-1 justify-center items-stretch">
         {filterListOfRestaurant.map((restaurant) => (
@@ -84,7 +97,13 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard restData={restaurant} />
+            {restaurant.info.avgRating >= 4.5 ? (
+              <RestaurantCardPromoted restData={restaurant} />
+            ) : (
+              <RestaurantCard restData={restaurant} />
+            )}
+
+            {/* <RestaurantCard restData={restaurant} /> */}
           </Link>
         ))}
       </div>
