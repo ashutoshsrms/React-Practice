@@ -3,7 +3,6 @@
   "description": "Food ordering app",
   "scripts": {
     "start": "parcel index.html",
-    "start-proxy": "node proxy.js",
     "build": "parcel build index.html"
   },
   "dependencies": {
