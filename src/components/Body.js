@@ -42,7 +42,7 @@ const Body = () => {
   return listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body p-4">
+    <div className="body p-4 min-h-screen">
       <div className="filter flex flex-wrap justify-center items-center bg-gray-100 rounded-lg shadow-md mb-2 p-4">
         <div className="search flex items-center m-2">
           <input
@@ -66,7 +66,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="m-2">
+        <div className="m-2 ">
           <button
             className="filter-btn px-4 py-2 bg-gradient-to-r from-blue-400 to-blue-500 text-white rounded-lg shadow-md hover:from-blue-500 hover:to-blue-600 transition duration-300 ease-in-out"
             onClick={() => {
